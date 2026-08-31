@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- ProMotion オプトイン。**このキーでは 120Hz は出せなかった**（下記の実測）。
+	     残してあるのは害が無く、将来の OS／別機種で効く可能性があるからで、
+	     「これを入れたから 120Hz になる」という前提でコードを書いてはいけない。
+
+	     採点は GameViewModel.lastDrawnTime（TimelineView が最後に描いたフレーム時刻）基準なので、
+	     止められる位置はフレーム間隔の格子になる。最速レベル（片道 1.35 秒）の PERFECT 窓は
+	     全幅 27ms で、120Hz（8.33ms 間隔）なら格子 3 点、60Hz（16.67ms 間隔）なら 1 点しか入らない。
+	     **1 点は入る**ことを perfectWindowSurvivesOn60Hz で固定してあるので、60Hz でも成立する。
+
+	     ビルド設定の INFOPLIST_KEY_* 経由では**入らない**。Xcode は既知のキーしか転記せず、
+	     未知のキーは黙って捨てる（2026-08-04 に生成 Info.plist をダンプして実測）。
+	     だからこのベース plist が要る。
+
+	     2026-08-05 実測（iPhone 16 Pro / iOS 26.5.2、端末のフレームレート制限・低電力モードとも OFF）:
+	       - CADisableMinimumFrameDuration       のみ → 60Hz 張り付き
+	       - CADisableMinimumFrameDurationOnPhone のみ → 60Hz 張り付き
+	       - UIScreen.maximumFramesPerSecond は 120 を返す（ハード側は 120 を許している）
+	     キー名は web 上の記述では OnPhone 付きが正とされるが、**Apple 一次情報での照合は未了**。
+	     OS がキャップしているのか、描画が 8.33ms のフレーム予算に間に合っていないのかも切り分けていない。
+	     いずれにせよ計画は 60Hz で成立する設計（選択肢 c）に倒したので、深追いを打ち切った。 -->
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+
+	<!-- Public portfolio build の Google Mobile Ads 設定。
+	     アプリ ID と広告ユニット ID は Google 公式テスト値だけを使用する。
+	     広告ユニット ID は AdMobService.swift に置く。
+	     SKAdNetworkItems は developers.google.com/admob/ios/3p-skadnetworks の
+	     2026-08-23 時点の推奨リスト全 50 件。productionへ転用する場合は最新リストと突合する。 -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>あなたに合った広告を表示するために使用します。</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict><key>SKAdNetworkIdentifier</key><string>cstr6suwn9.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>4fzdc2evr5.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>2fnua5tdw4.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>ydx93a7ass.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>p78axxw29g.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>v72qych5uu.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>ludvb6z3bs.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>cp8zw746q7.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>3sh42y64q3.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>c6k4g5qg8m.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>s39g8k73mm.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>wg4vff78zm.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>3qy4746246.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>f38h382jlk.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>hs6bdukanm.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>mlmmfzh3r3.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>v4nxqhlyqp.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>wzmmz9fp6w.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>su67r6k2v3.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>yclnxrl5pm.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>t38b2kh725.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>7ug5zh24hu.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>gta9lk7p23.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>vutu7akeur.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>y5ghdn5j9k.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>v9wttpbfk9.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>n38lu8286q.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>47vhws6wlr.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>kbd757ywx3.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>9t245vhmpl.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>a2p9lx4jpn.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>22mmun2rn5.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>44jx6755aq.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>k674qkevps.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>4468km3ulz.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>2u9pt9hc89.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>8s468mfl3y.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>klf5c3l5u5.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>ppxm28t8ap.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>kbmxgpxpgc.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>uw77j35x4d.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>578prtvx9j.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>4dzt52r2t5.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>tl55sbb4fm.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>c3frkrj4fj.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>e5fvkxwrpn.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>8c4e2ghe7u.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>3rd42ekr43.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>97r2b46745.skadnetwork</string></dict>
+		<dict><key>SKAdNetworkIdentifier</key><string>3qcr597p9d.skadnetwork</string></dict>
+	</array>
+</dict>
+</plist>

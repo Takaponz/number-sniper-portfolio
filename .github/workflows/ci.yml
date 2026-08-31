@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        # actions/checkout v4, resolved 2026-08-31
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Select Xcode 26.2
+        run: sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer
+      - name: Test core package
+        working-directory: NumberSniperCore
+        run: swift test
+      - name: Build app for iOS Simulator
+        run: >-
+          xcodebuild build
+          -project NumberSniper.xcodeproj
+          -scheme NumberSniper
+          -sdk iphonesimulator
+          -destination 'generic/platform=iOS Simulator'
+          -derivedDataPath ./DerivedData
+          CODE_SIGNING_ALLOWED=NO
