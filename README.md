@@ -11,7 +11,7 @@
 ## What I Built
 
 - SwiftUIによるiPhone向けゲームUIと画面遷移
-- UIKitに依存しない`NumberSniperCore`と、239件の決定的テスト
+- 画面や外部サービスから独立して検証できるゲームロジック
 - 難易度・レベル曲線・練習モード・復活フロー
 - AdMob統合例、Game Center、音声、ハプティクスのiOSサービス境界
 - Privacy Manifestと、ネットワーク広告を無効化した公開用stub構成
@@ -47,7 +47,7 @@ flowchart LR
     VM --> IOS[iOS Services]
     IOS --> GC[Game Center]
     IOS --> Audio[Audio / Haptics]
-    Core --> Tests[239 Deterministic Tests]
+    Core --> Tests[ゲームルールの自動テスト]
 ```
 
 詳しい境界とデータフローは[`docs/architecture.md`](docs/architecture.md)を参照してください。
@@ -76,7 +76,7 @@ cd NumberSniperCore
 swift test
 ```
 
-公開時のfresh runでは239件のCore testsが成功しています。Simulator buildを含む手順は[`docs/testing.md`](docs/testing.md)にあります。
+採点、出題、難易度、ゲーム進行が正しく動くことを自動テストで確認しています。公開時の検証では239件すべてが成功しています。Simulator buildを含む手順は[`docs/testing.md`](docs/testing.md)にあります。
 
 ## Portfolio Build Limitations
 
