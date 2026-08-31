@@ -89,14 +89,12 @@ swift test
 
 ## AI Assistance
 
-AI coding tools were used for implementation support, test generation, and
-documentation review. Product decisions, acceptance criteria, asset selection,
-and final validation were performed by the repository owner.
+AIコーディングツールを、実装の補助、テスト作成、ドキュメントのレビューに使用しました。
+ゲームの方針、完成条件、素材の選定、最終確認はリポジトリ所有者が行っています。
 
 ## License and Assets
 
-This is source-available portfolio software, not an open-source project. The
-repository may be cloned, built, and run locally for evaluation; redistribution,
-derivative publication, and commercial use are not permitted. See [`LICENSE`](LICENSE),
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), and
-[`docs/ASSET_PROVENANCE.md`](docs/ASSET_PROVENANCE.md).
+本リポジトリは、ソースコードを閲覧できるポートフォリオ作品であり、オープンソースではありません。
+評価目的でクローン、ビルド、ローカル実行できますが、再配布、改変版の公開、商用利用は認めていません。
+詳しくは[`LICENSE`](LICENSE)、[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)、
+[`docs/ASSET_PROVENANCE.md`](docs/ASSET_PROVENANCE.md)を参照してください。
